@@ -89,7 +89,7 @@ class _TransactionFormState extends State<TransactionForm> {
                 onSubmitted: (_) => _submitForm(),
                 label: 'Valor (R\$)',
               ),
-              SizedBox(
+              /* SizedBox(
                 height: 70,
                 child: Row(
                   children: <Widget>[
@@ -112,7 +112,7 @@ class _TransactionFormState extends State<TransactionForm> {
                     )
                   ],
                 ),
-              ),
+              ), */
               AdaptativeDatePicker(
                 selectedDate: _selectedDate,
                 onDateChanged: (newDate) {

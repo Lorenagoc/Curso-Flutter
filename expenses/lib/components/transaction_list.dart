@@ -3,10 +3,10 @@ import '../models/transaction.dart';
 import 'transaction_item.dart';
 
 class TransactionList extends StatelessWidget {
-  const TransactionList(
-      {super.key, required this.transactions, required this.onRemove});
   final List<Transaction> transactions;
   final void Function(String) onRemove;
+  const TransactionList(this.transactions, this.onRemove, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +32,23 @@ class TransactionList extends StatelessWidget {
               );
             },
           )
-        : ListView.builder(
-            itemCount: transactions.length,
-            itemBuilder: (ctx, index) {
-              final tr = transactions[index];
-              return TransactionItem(tr: tr, onRemove: onRemove);
-            },
+        : ListView(
+            children: transactions.map(
+              (tr) {
+                return TransactionItem(
+                  key: ValueKey(tr.id),
+                  tr: tr,
+                  onRemove: onRemove,
+                );
+              },
+            ).toList(),
           );
+    // : ListView.builder(
+    //     itemCount: transactions.length,
+    //     itemBuilder: (ctx, index) {
+    //       final tr = transactions[index];
+    //       return TransactionItem(tr: tr, onRemove: onRemove);
+    //     },
+    //   );
   }
 }

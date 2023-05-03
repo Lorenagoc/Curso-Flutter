@@ -44,6 +44,7 @@ class AdaptativeDatePicker extends StatelessWidget {
         : SizedBox(
             height: 70,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   selectedDate == null
