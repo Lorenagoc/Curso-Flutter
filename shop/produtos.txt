@@ -26,7 +26,7 @@
     Product(
       id: 'p4',
       title: 'Batata Assada',
-      description: 'Batata assada, é quase a sauté só que no forno',
+      description: 'Batata assada, é quase a sauté só que no forno.',
       price: 49.99,
       imageUrl:
           'https://centralblogs.com.br/wp-content/uploads/2022/05/batata-assada-no-forno-rustica-e-crocante.jpg',

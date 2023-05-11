@@ -1,0 +1,36 @@
+import '../models/products.dart';
+
+final dummyProducts = [
+  Product(
+    id: 'p1',
+    name: 'Batata Palha',
+    description: 'Batata palha, delícia!',
+    price: 29.99,
+    imageUrl:
+        'https://static.wixstatic.com/media/774993_0d002574c446484b856cf12e062c12fc~mv2.jpg/v1/fill/w_2048,h_1365,al_c,q_85/774993_0d002574c446484b856cf12e062c12fc~mv2.jpg',
+  ),
+  Product(
+    id: 'p2',
+    name: 'Batata Frita',
+    description: 'Batata frita, não tem melhor.',
+    price: 59.99,
+    imageUrl:
+        'https://cdn.casaeculinaria.com/wp-content/uploads/2023/03/13101208/Batata-frita.jpg',
+  ),
+  Product(
+    id: 'p3',
+    name: 'Batata Sauté',
+    description: 'Batata sauté, perfeita para o domingão.',
+    price: 19.99,
+    imageUrl:
+        'https://marolacomcarambola.com.br/wp-content/uploads/2020/06/receita-de-batata-saute-10.jpg',
+  ),
+  Product(
+    id: 'p4',
+    name: 'Batata Assada',
+    description: 'Batata assada, é quase a sauté só que no forno.',
+    price: 49.99,
+    imageUrl:
+        'https://centralblogs.com.br/wp-content/uploads/2022/05/batata-assada-no-forno-rustica-e-crocante.jpg',
+  ),
+];
