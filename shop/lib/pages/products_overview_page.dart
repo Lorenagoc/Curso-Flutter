@@ -4,7 +4,7 @@ import 'package:shop/components/additional_marker.dart';
 import 'package:shop/components/app_drawer.dart';
 import 'package:shop/utils/app_routes.dart';
 import '../components/product_grid.dart';
-import '../models/cart.dart';
+import '../providers/cart.dart';
 
 enum FilterOptions {
   Favorite,

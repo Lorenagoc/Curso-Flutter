@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/components/app_drawer.dart';
-import 'package:shop/models/cart.dart';
-import 'package:shop/models/order.dart';
-import 'package:shop/models/order_list.dart';
-import 'package:shop/models/product_list.dart';
+import 'package:shop/pages/product_form_page.dart';
+import 'package:shop/providers/cart.dart';
+import 'package:shop/providers/order.dart';
+import 'package:shop/providers/order_list.dart';
+import 'package:shop/providers/product_list.dart';
 import 'package:shop/pages/cart_page.dart';
 import 'package:shop/pages/orders_page.dart';
 import 'package:shop/pages/product_detail_page.dart';
+import 'package:shop/pages/products_page.dart';
 import 'package:shop/pages/products_overview_page.dart';
 import 'package:shop/utils/app_routes.dart';
 
@@ -40,6 +42,8 @@ class MyApp extends StatelessWidget {
           AppRoutes.PRODUCT_DETAIL: (context) => const ProductDetailPage(),
           AppRoutes.CART: (context) => const CartPage(),
           AppRoutes.ORDERS: (context) => const OrdersPage(),
+          AppRoutes.PRODUCTS: (context) => const ProductsPage(),
+          AppRoutes.PRODUCT_FORM: (context) => const ProductFormPage(),
         },
         debugShowCheckedModeBanner: false,
       ),

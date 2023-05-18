@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:shop/models/cart_item.dart';
-import 'package:shop/models/products.dart';
+import 'package:shop/providers/cart_item.dart';
+import 'package:shop/providers/products.dart';
 
 class Cart with ChangeNotifier {
   Map<String, CartItem> _items = {};
@@ -51,6 +51,27 @@ class Cart with ChangeNotifier {
 
   void removeItem(String productId) {
     _items.remove(productId);
+    notifyListeners();
+  }
+
+  void removeSingleItem(String productId) {
+    if (!_items.containsKey(productId)) {
+      return;
+    }
+    if (_items[productId]?.quantity == 1) {
+      _items.remove(productId);
+    } else {
+      _items.update(
+        productId,
+        (existingItem) => CartItem(
+          existingItem.id,
+          existingItem.productId,
+          existingItem.name,
+          existingItem.quantity - 1,
+          existingItem.price,
+        ),
+      );
+    }
     notifyListeners();
   }
 

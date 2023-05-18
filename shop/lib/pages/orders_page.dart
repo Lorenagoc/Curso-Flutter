@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop/components/app_drawer.dart';
 import 'package:shop/components/order_widget.dart';
 
-import '../models/order_list.dart';
+import '../providers/order_list.dart';
 
 class OrdersPage extends StatelessWidget {
   const OrdersPage({super.key});
