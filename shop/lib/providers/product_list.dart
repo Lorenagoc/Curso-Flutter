@@ -7,7 +7,15 @@ import '../exceptions/http_exception.dart';
 import '../utils/constants.dart';
 
 class ProductList with ChangeNotifier {
-  final List<Product> _items = [];
+  final String _token;
+  final String _userId;
+  List<Product> _items = [];
+
+  ProductList([
+    this._token = '',
+    this._userId = '',
+    this._items = const [],
+  ]);
 
   List<Product> get items => [..._items];
   List<Product> get favoriteItems =>
@@ -18,24 +26,36 @@ class ProductList with ChangeNotifier {
   }
 
   Future<void> loadProducts() async {
-    _items.clear();
+    List<Product> items = [];
+
     final response = await http.get(
-      Uri.parse('${Constants.PRODUCT_BASE_URL}.json'),
+      Uri.parse('${Constants.PRODUCT_BASE_URL}.json?auth=$_token'),
     );
     if (response.body == 'null') return;
+
+    final favoritesResponse = await http.get(
+      Uri.parse('${Constants.USER_FAVORITES_URL}/$_userId.json?auth=$_token'),
+    );
+
+    Map<String, dynamic> favoritesData = favoritesResponse.body == 'null'
+        ? {}
+        : jsonDecode(favoritesResponse.body);
+
     Map<String, dynamic> data = jsonDecode(response.body);
     data.forEach((productId, productData) {
-      _items.add(
+      final isFavorite = favoritesData[productId] ?? false;
+      items.add(
         Product(
           id: productId,
           name: productData['name'],
           description: productData['description'],
           price: productData['price'],
           imageUrl: productData['imageUrl'],
-          isFavorite: productData['isFavorite'],
+          isFavorite: isFavorite,
         ),
       );
     });
+    _items = items.reversed.toList();
     notifyListeners();
   }
 
@@ -64,7 +84,6 @@ class ProductList with ChangeNotifier {
           "description": product.description,
           "price": product.price,
           "imageUrl": product.imageUrl,
-          "isFavorite": product.isFavorite,
         },
       ),
     );
@@ -75,7 +94,6 @@ class ProductList with ChangeNotifier {
       description: product.description,
       price: product.price,
       imageUrl: product.imageUrl,
-      isFavorite: product.isFavorite,
     ));
     notifyListeners();
   }
